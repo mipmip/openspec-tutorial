@@ -1,0 +1,17 @@
+{
+  "name": "openspec-tutorial",
+  "version": "1.0.0",
+  "description": "OpenSpec 教程 - 从零开始学习规范驱动开发",
+  "scripts": {
+    "start": "echo 'OpenSpec 教程项目 - 查看 docs/ 目录学习'",
+    "test": "echo '暂无测试'"
+  },
+  "keywords": [
+    "openspec",
+    "spec-driven-development",
+    "ai-coding",
+    "tutorial"
+  ],
+  "author": "",
+  "license": "MIT"
+}
