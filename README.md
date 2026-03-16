@@ -2,6 +2,12 @@
 
 一个面向初学者的 OpenSpec 完整入门教程，通过实际案例学习如何与 AI 协作进行规范驱动开发。
 
+## 🌐 在线阅读
+
+**教程网站**: https://aiyinluya.github.io/openspec-tutorial/
+
+无需安装任何工具，直接在浏览器中阅读完整教程。
+
 ## 📚 项目简介
 
 OpenSpec 是一个 **AI 编程助手的 Spec-Driven Development（规范驱动开发）框架**。它让你在写代码之前，先与 AI 对齐需求、设计和任务，避免"做出来不是想要的"的尴尬。
