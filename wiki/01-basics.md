@@ -1,3 +1,7 @@
+﻿> [目录](Home.md) | [第二章：安装配置 >>](02-installation.md)
+
+---
+
 # 第一章：OpenSpec 基础概念
 
 ## AI 编程的痛点
@@ -261,6 +265,4 @@ User {
 
 ---
 
-## 下一步
-
-→ [第二章：安装配置](02-installation.md)
+> [目录](Home.md) | [第二章：安装配置 >>](02-installation.md)

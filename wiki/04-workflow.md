@@ -1,21 +1,10 @@
+﻿> [<< 第三章：核心命令](03-commands.md) | [目录](Home.md) | [第五章：项目结构 >>](05-structure.md)
+
+---
+
 # 第四章：完整工作流演示
 
 本章通过一个完整的案例，演示 OpenSpec 的实际使用流程。
-
-## 两种使用方式
-
-OpenSpec 可以通过两种方式使用：
-
-| 方式 | 说明 | 示例 |
-|------|------|------|
-| **CLI 方式** | 直接在终端使用 CLI 命令 | `openspec new change xxx` |
-| **AI-native 方式** | 在 AI 工具的对话中使用命令 | `/opsx:propose "xxx"` |
-
-两种方式可以结合使用：
-- 使用 CLI 创建和管理变更
-- 使用 AI-native 命令让 AI 自动完成文档生成和代码实现
-
----
 
 ## 案例：添加暗黑模式
 
@@ -23,28 +12,13 @@ OpenSpec 可以通过两种方式使用：
 
 ---
 
-## 第一步：创建变更
-
-### CLI 方式（直接创建）
+## 第一步：创建提案
 
 ```bash
-openspec new change add-dark-mode
-```
-
-### AI-native 方式（让 AI 帮忙）
-
-在 AI 工具中告诉它：
-
-```
 /opsx:propose "添加暗黑模式，用户可以在亮色和暗色主题之间切换"
 ```
 
-AI 会自动：
-1. 运行 `openspec new change add-dark-mode` 创建目录
-2. 生成规范文档
-3. 展示给你确认
-
-无论哪种方式，创建后目录结构如下：
+AI 分析后，创建目录结构：
 
 ```
 openspec/changes/add-dark-mode/
@@ -180,8 +154,7 @@ src/
 仔细阅读 AI 生成的文档：
 
 ```bash
-# 查看提案
-openspec show add-dark-mode
+# 查看 proposal
 cat openspec/changes/add-dark-mode/proposal.md
 
 # 查看需求
@@ -213,13 +186,11 @@ AI 会更新文档，直到你满意为止。
 
 ---
 
-## 第三步：开始实现
+## 第三步：应用实现
 
-### AI-native 方式（推荐）
+确认规范后，开始实现：
 
-在 AI 工具中：
-
-```
+```bash
 /opsx:apply
 ```
 
@@ -273,34 +244,7 @@ AI 会按 tasks.md 的顺序执行：
 
 ## 第四步：验证功能
 
-### CLI 方式验证
-
-```bash
-# 验证变更是否符合规范
-openspec validate add-dark-mode
-
-# 查看任务完成状态
-openspec status --change add-dark-mode
-```
-
-### AI-native 方式验证
-
-在 AI 工具中：
-
-```
-/opsx:verify
-```
-
-AI 会对比 specs/ 和代码，报告是否符合规范：
-
-```
-✓ 手机号登录 - 已实现
-✓ 验证码 5 分钟过期 - 已实现
-✗ 微信登录 - 未实现（tasks.md 1.4 未完成）
-⚠ 登录失败次数限制 - 规范要求 5 次，代码实现为 3 次
-```
-
-### 手动测试
+实现完成后，手动测试：
 
 ```bash
 # 启动应用
@@ -312,40 +256,33 @@ npm run dev
 # 3. 切换系统主题，应用是否跟随
 ```
 
+### 验证命令
+
+```bash
+/opsx:verify
+```
+
+AI 会对比 specs/ 和代码，报告是否符合规范。
+
 ---
 
 ## 第五步：归档变更
 
-### CLI 方式
+功能测试通过后，归档记录：
 
 ```bash
-# 归档变更（会提示确认）
-openspec archive add-dark-mode
-
-# 跳过确认
-openspec archive add-dark-mode --yes
-```
-
-### AI-native 方式
-
-在 AI 工具中：
-
-```
 /opsx:archive
 ```
 
-AI 会调用 CLI 的 archive 命令完成归档。
-
-### 归档结果
-
 变更被移动到：
 ```
-openspec/archive/YYYY-MM-DD-add-dark-mode/
+openspec/changes/add-dark-mode/
+→ openspec/archive/2025-03-16-add-dark-mode/
 ```
 
 目录结构：
 ```
-openspec/archive/YYYY-MM-DD-add-dark-mode/
+openspec/archive/2025-03-16-add-dark-mode/
 ├── proposal.md
 ├── specs/
 ├── design.md
@@ -393,21 +330,13 @@ openspec/archive/YYYY-MM-DD-add-dark-mode/
 开始
   │
   ▼
-┌─────────────────────────────────────┐
-│  创建变更                            │
-│  CLI: openspec new change xxx       │
-│  AI: /opsx:propose "xxx"           │
-└─────────────────────────────────────┘
+/opsx:propose "描述你的需求"
   │
   ▼
-┌─────────────────────────────────────┐
-│  AI 生成规范文档                      │
-│  proposal.md / specs/               │
-│  design.md / tasks.md              │
-└─────────────────────────────────────┘
+AI 创建规范文档
   │
   ▼
-  你审查规范文档
+你审查规范文档
   │
   ├─ 不满意 ──→ 告诉 AI 修改 ──→ 回到审查
   │
@@ -417,7 +346,7 @@ openspec/archive/YYYY-MM-DD-add-dark-mode/
               AI 实现代码
                   │
                   ▼
-              手动测试验证
+              你测试验证
                   │
               ├─ 有问题 ──→ 告诉 AI 修复 ──→ 继续测试
               │
@@ -432,54 +361,4 @@ openspec/archive/YYYY-MM-DD-add-dark-mode/
 
 ---
 
-## 常用命令速查
-
-### CLI 命令（终端）
-
-```bash
-# 初始化
-openspec init
-openspec init --tools claude,cursor
-
-# 创建
-openspec new change <name>
-
-# 查看
-openspec list
-openspec show <name>
-openspec view
-
-# 验证
-openspec validate [name]
-openspec validate --all
-
-# 状态
-openspec status
-openspec status --change <name>
-
-# 归档
-openspec archive <name>
-openspec archive <name> --yes
-
-# 配置
-openspec config list
-openspec config profile
-openspec update
-```
-
-### AI-native 命令（AI 对话）
-
-```
-/opsx:propose "描述需求"    # 创建提案
-/opsx:apply                  # 开始实现
-/opsx:verify                 # 验证实现
-/opsx:sync                   # 同步状态
-/opsx:archive                # 归档
-/opsx:onboard                # 新成员引导
-```
-
----
-
-## 下一步
-
-→ [第五章：项目结构详解](05-structure.md)
+> [<< 第三章：核心命令](03-commands.md) | [目录](Home.md) | [第五章：项目结构 >>](05-structure.md)

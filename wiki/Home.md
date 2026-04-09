@@ -1,4 +1,4 @@
-# OpenSpec 教程 - 从零开始学习规范驱动开发
+﻿# OpenSpec 教程 - 从零开始学习规范驱动开发
 
 一个面向初学者的 OpenSpec 完整入门教程，通过实际案例学习如何与 AI 协作进行规范驱动开发。
 
@@ -41,13 +41,10 @@ cd your-project
 openspec init
 ```
 
-### 第一个变更
+### 第一个规范
 
 ```bash
-# 方式一：直接用 CLI 创建
-openspec new change add-user-login
-
-# 方式二：在 AI 工具中告诉它
+# 告诉 AI 你想做什么
 /opsx:propose "添加用户登录功能"
 ```
 
@@ -63,28 +60,25 @@ openspec/changes/add-user-login/
 
 ### 开始实现
 
-在 AI 工具中告诉它：
-
-```
+```bash
+# AI 按 tasks.md 自动实现
 /opsx:apply
 ```
-
-AI 会按 tasks.md 自动实现代码。
 
 ## 📖 教程大纲
 
 | 章节 | 内容 | 文件 |
 |------|------|------|
-| 01-基础概念 | OpenSpec 是什么、为什么需要它 | [docs/01-basics.md](docs/01-basics.md) |
-| 02-安装配置 | 安装、初始化、配置 | [docs/02-installation.md](docs/02-installation.md) |
-| 03-核心命令 | /opsx:propose, /opsx:apply 等 | [docs/03-commands.md](docs/03-commands.md) |
-| 04-工作流 | 完整开发流程演示 | [docs/04-workflow.md](docs/04-workflow.md) |
-| 05-项目结构 | openspec/ 目录详解 | [docs/05-structure.md](docs/05-structure.md) |
-| 06-文档规范 | proposal、design、tasks 怎么写 | [docs/06-documentation.md](docs/06-documentation.md) |
-| 07-实战案例 | 完整项目实战 | [docs/07-examples.md](docs/07-examples.md) |
-| 08-团队协作 | 多人协作最佳实践 | [docs/08-teamwork.md](docs/08-teamwork.md) |
-| 09-高级技巧 | 进阶用法和技巧 | [docs/09-advanced.md](docs/09-advanced.md) |
-| 10-常见问题 | FAQ 和故障排除 | [docs/10-faq.md](docs/10-faq.md) |
+| 01-基础概念 | OpenSpec 是什么、为什么需要它 | [docs/01-basics.md](01-basics.md) |
+| 02-安装配置 | 安装、初始化、配置 | [docs/02-installation.md](02-installation.md) |
+| 03-核心命令 | /opsx:propose, /opsx:apply 等 | [docs/03-commands.md](03-commands.md) |
+| 04-工作流 | 完整开发流程演示 | [docs/04-workflow.md](04-workflow.md) |
+| 05-项目结构 | openspec/ 目录详解 | [docs/05-structure.md](05-structure.md) |
+| 06-文档规范 | proposal、design、tasks 怎么写 | [docs/06-documentation.md](06-documentation.md) |
+| 07-实战案例 | 完整项目实战 | [docs/07-examples.md](07-examples.md) |
+| 08-团队协作 | 多人协作最佳实践 | [docs/08-teamwork.md](08-teamwork.md) |
+| 09-高级技巧 | 进阶用法和技巧 | [docs/09-advanced.md](09-advanced.md) |
+| 10-常见问题 | FAQ 和故障排除 | [docs/10-faq.md](10-faq.md) |
 
 ## 🎯 实战案例
 
@@ -135,4 +129,25 @@ MIT License
 
 ---
 
-**开始学习** → [docs/01-basics.md](docs/01-basics.md)
+**开始学习** → [docs/01-basics.md](01-basics.md)
+
+---
+
+## 章节导航
+
+| # | 章节 | 链接 |
+|---|------|------|
+| 01 | 基础概念 | [第一章：基础概念](01-basics.md) |
+| 02 | 安装配置 | [第二章：安装配置](02-installation.md) |
+| 03 | 核心命令 | [第三章：核心命令](03-commands.md) |
+| 04 | 完整工作流 | [第四章：完整工作流](04-workflow.md) |
+| 05 | 项目结构 | [第五章：项目结构](05-structure.md) |
+| 06 | 文档编写规范 | [第六章：文档编写规范](06-documentation.md) |
+| 07 | 实战案例 | [第七章：实战案例](07-examples.md) |
+| 08 | 团队协作 | [第八章：团队协作](08-teamwork.md) |
+| 09 | 高级技巧 | [第九章：高级技巧](09-advanced.md) |
+| 10 | 常见问题 | [第十章：常见问题](10-faq.md) |
+
+---
+
+> 从这里开始 → [第一章：基础概念](01-basics.md)

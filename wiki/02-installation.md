@@ -1,3 +1,7 @@
+﻿> [<< 第一章：基础概念](01-basics.md) | [目录](Home.md) | [第三章：核心命令 >>](03-commands.md)
+
+---
+
 # 第二章：安装与配置
 
 ## 环境要求
@@ -40,10 +44,10 @@ bun add -g @fission-ai/openspec@latest
 ### 验证安装
 
 ```bash
-openspec -V
+openspec --version
 ```
 
-应该输出类似：`1.2.0`
+应该输出类似：`@fission-ai/openspec/1.2.0`
 
 ---
 
@@ -100,7 +104,24 @@ my-project/
 
 ### AGENTS.md 文件
 
-这是给 AI 助手看的配置文件，包含 OpenSpec 的 AI-native 命令定义。
+这是给 AI 助手看的配置文件：
+
+```markdown
+# OpenSpec Agent Configuration
+
+## Commands
+- `/opsx:propose <description>` - Create a new change proposal
+- `/opsx:apply` - Apply the current change
+- `/opsx:archive` - Archive the completed change
+
+## Workflow
+1. Use `/opsx:propose` to start a new feature
+2. Review the generated specs
+3. Use `/opsx:apply` to implement
+4. Use `/opsx:archive` when done
+```
+
+你可以编辑这个文件，添加项目特定的上下文信息。
 
 ---
 
@@ -109,52 +130,81 @@ my-project/
 ### 查看当前配置
 
 ```bash
-openspec config list
+openspec config profile
 ```
 
 ### 选择工作流
 
-OpenSpec 支持通过 `--profile` 选择工作流模式：
+OpenSpec 提供两种工作流：
 
+#### 1. 精简模式（默认）
+
+适合快速迭代：
 ```bash
-# 查看可用的工作流预设
-openspec config profile
-
-# 应用预设（如 core）
-openspec init --profile core
-openspec init --profile <preset-name>
+openspec config profile minimal
 ```
 
-### 查看所有可用配置项
+可用命令：
+- `/opsx:propose` - 创建提案
+- `/opsx:apply` - 应用实现
+- `/opsx:archive` - 归档
+
+#### 2. 完整模式
+
+适合复杂项目：
+```bash
+openspec config profile full
+```
+
+可用命令：
+- `/opsx:new` - 新建变更
+- `/opsx:propose` - 创建提案
+- `/opsx:continue` - 继续实现
+- `/opsx:ff` - 快进（自动实现）
+- `/opsx:apply` - 应用实现
+- `/opsx:verify` - 验证实现
+- `/opsx:sync` - 同步状态
+- `/opsx:bulk-archive` - 批量归档
+- `/opsx:onboard` - 项目引导
+
+### 应用配置
 
 ```bash
-openspec config list
-openspec config get <key>     # 查看某个配置值
-openspec config set <key> <value>  # 设置某个配置值
-openspec config path          # 查看配置文件路径
+openspec update
 ```
+
+这会更新 AGENTS.md 文件中的命令列表。
 
 ---
 
 ## 配置 AI 工具
 
-### 初始化时指定 AI 工具
+### 支持的 AI 工具
+
+OpenSpec 支持 20+ 种 AI 编程助手：
+
+| 工具 | 配置方式 |
+|------|---------|
+| Claude Code | 自动检测 |
+| Codex (OpenAI) | 自动检测 |
+| Pi | 自动检测 |
+| Kiro | 自动检测 |
+| Cursor | 安装 Cursor 扩展 |
+| GitHub Copilot | 使用 Copilot Chat |
+
+### 检查支持状态
 
 ```bash
-openspec init --tools claude,cursor,github-copilot
+openspec doctor
 ```
 
-支持的 AI 工具（逗号分隔）：
-`amazon-q`, `antigravity`, `auggie`, `claude`, `cline`, `codex`, `codebuddy`, `continue`, `costrict`, `crush`, `cursor`, `factory`, `gemini`, `github-copilot`, `iflow`, `kilocode`, `kiro`, `opencode`, `pi`, `qoder`, `qwen`, `roocode`, `trae`, `windsurf`
-
-### 查看变更状态
-
-```bash
-# 查看当前项目中所有变更的状态
-openspec status
-
-# 查看指定变更的完成状态
-openspec status --change <change-name>
+输出示例：
+```
+✓ Node.js 20.19.0
+✓ OpenSpec 1.2.0
+✓ Claude Code detected
+✓ Git repository detected
+✓ AGENTS.md is up to date
 ```
 
 ---
@@ -164,13 +214,7 @@ openspec status --change <change-name>
 安装完成后，试试第一个命令：
 
 ```bash
-# 在项目目录中，创建新的变更
-openspec new change "add-readme"
-```
-
-或者在 AI 工具中使用 AI-native 命令：
-
-```
+# 在项目目录中
 /opsx:propose "添加一个 README 文件"
 ```
 
@@ -218,6 +262,4 @@ openspec update
 
 ---
 
-## 下一步
-
-→ [第三章：核心命令](03-commands.md)
+> [<< 第一章：基础概念](01-basics.md) | [目录](Home.md) | [第三章：核心命令 >>](03-commands.md)

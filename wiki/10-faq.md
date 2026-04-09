@@ -1,3 +1,7 @@
+﻿> [<< 第九章：高级技巧](09-advanced.md) | [目录](Home.md)
+
+---
+
 # 第十章：常见问题
 
 ## 安装问题
@@ -96,13 +100,13 @@ AI 会更新规范文档，然后继续实现
 
 ### Q: /opsx:apply 执行到一半中断了
 
-**A**: 继续对话，告诉 AI 继续执行剩余任务
+**A**: 使用 /opsx:continue 继续
 
-```
-继续执行 tasks.md 中未完成的任务
+```bash
+/opsx:continue
 ```
 
-AI 会读取 tasks.md，找到未完成的任务（打勾的任务已完成），从中断处继续。
+AI 会从上次中断的地方继续。
 
 ### Q: 如何查看当前有哪些变更在进行
 
@@ -234,15 +238,14 @@ AI 会生成项目概览文档。
 
 ### Q: 如何加快开发速度
 
-**A**: 让 AI 批量执行所有任务
+**A**: 使用 /opsx:ff
 
-在 AI 工具中：
-
+```bash
+# 快进模式，自动完成所有任务
+/opsx:ff
 ```
-/opsx:apply
-```
 
-AI 会自动按 tasks.md 顺序执行完所有任务。适合规范清晰、任务简单的情况。
+适合规范清晰、任务简单的情况。
 
 ---
 
@@ -283,26 +286,4 @@ npm uninstall -g @fission-ai/openspec
 
 ---
 
-## 获取帮助
-
-### 官方资源
-
-- GitHub: https://github.com/Fission-AI/OpenSpec
-- 文档: https://openspec.dev/
-- Discord: https://discord.gg/YctCnvvshC
-
-### 报告问题
-
-在 GitHub Issues 报告：
-https://github.com/Fission-AI/OpenSpec/issues
-
----
-
-**恭喜！你已经学完了 OpenSpec 完整教程。**
-
-现在可以开始在你的项目中使用 OpenSpec 了！
-
-```bash
-# 开始你的第一个变更
-/opsx:propose "添加一个新功能"
-```
+> [<< 第九章：高级技巧](09-advanced.md) | [目录](Home.md)

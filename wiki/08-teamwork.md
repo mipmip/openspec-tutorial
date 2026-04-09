@@ -1,3 +1,7 @@
+﻿> [<< 第七章：实战案例](07-examples.md) | [目录](Home.md) | [第九章：高级技巧 >>](09-advanced.md)
+
+---
+
 # 第八章：团队协作
 
 ## OpenSpec 如何支持团队协作
@@ -62,16 +66,14 @@ AI 实现一致
 ```bash
 # 后端开发者
 git checkout -b feature/comments-backend
-/opsx:apply
-# AI 会按 tasks.md 顺序执行后端相关任务
+/opsx:apply task 1.1
+/opsx:apply task 1.2
 
 # 前端开发者
 git checkout -b feature/comments-frontend
-/opsx:apply
-# AI 会按 tasks.md 顺序执行前端相关任务
+/opsx:apply task 2.1
+/opsx:apply task 2.2
 ```
-
-> 注：如果需要只执行特定任务，告诉 AI：「请只实现 tasks.md 中的 1.1 和 1.2」
 
 ### 4. 代码审查
 
@@ -209,6 +211,4 @@ XX 产品是一个...
 
 ---
 
-## 下一步
-
-→ [第九章：高级技巧](09-advanced.md)
+> [<< 第七章：实战案例](07-examples.md) | [目录](Home.md) | [第九章：高级技巧 >>](09-advanced.md)
