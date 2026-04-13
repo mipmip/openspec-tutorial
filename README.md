@@ -1,3 +1,5 @@
+[English](README-en.md)
+
 # OpenSpec 教程 - 从零开始学习规范驱动开发
 
 一个面向初学者的 OpenSpec 完整入门教程，通过实际案例学习如何与 AI 协作进行规范驱动开发。
